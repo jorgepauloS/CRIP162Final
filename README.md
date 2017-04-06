@@ -6,6 +6,6 @@ Para testes da cifra de playfair, executar o arquivo "teste_playfair_porta.py", 
 
 Obs: Para executar todas as cifras em Python, os arquivos "cipher.py", "convertBin.py" devem estar na mesma pasta.
 
-LCG é uma classe em C#, retorna os valores pedidos em uma string. Usar assim:
+LCG(Linear Congruence Generator ou Gerador de Congruências Lineares) é uma classe em C#, retorna os valores pedidos em uma string. Usar assim:
 
 string Exemplo = LCG.Congru(LCG.Sortear(int X, int Mod);
