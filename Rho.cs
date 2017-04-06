@@ -8,28 +8,33 @@ namespace Cript162.Cifras
 {
     class Rho
     {
+        static int gcd(int a, int b)
+        {
+            int remainder;
+            while (b != 0)
+            {
+                remainder = a % b;
+                a = b;
+                b = remainder;
+            }
+            return a;
+        }
+
         public static string GetFactorCount(int numberToCheck)
         {
-            string output = "";
-            int factorCount = 0;
-            int sqrt = (int)Math.Ceiling(Math.Sqrt(numberToCheck));
-            output += numberToCheck.ToString() + " \n ";
-            // Começa de 1 se nós quisermos também feito para funcionar quando numberToCheck seja 0 ou 1.
-            for (int i = numberToCheck-1; i >= 1; i--)
+            int x_fixed = 2, cycle_size = 2, x = 2, factor = 1;
+            while (factor == 1)
             {
-                if (numberToCheck % i == 0)
+                for (int count = 1; count <= cycle_size && factor <= 1; count++)
                 {
-                    factorCount += 2; //  Encontrou um par de fatores
-                    output += i.ToString()+" \n ";
+                    x = (x * x + 1) % numberToCheck;
+                    factor = gcd(x - x_fixed, numberToCheck);
                 }
+
+                cycle_size *= 2;
+                x_fixed = x;
             }
-            // Checa se o número é um quadrado perfeito.
-            if (sqrt * sqrt == numberToCheck)
-            {
-                factorCount++;
-            }
-            output += factorCount.ToString()+" fatores.";
-            return output;
+            return "O fator é: " + factor.ToString() ;
         }
     }
 }
